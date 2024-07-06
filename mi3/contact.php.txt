@@ -1,0 +1,31 @@
+﻿<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Handle background image upload
+    if ($_FILES["background"]["error"] == UPLOAD_ERR_OK) {
+        $upload_dir = "uploads/"; // Directory where images will be stored
+        $file_name = $_FILES["background"]["name"];
+        $file_tmp = $_FILES["background"]["tmp_name"];
+
+        // Move uploaded file to designated directory
+        move_uploaded_file($file_tmp, $upload_dir . $file_name);
+
+        // Set background image path
+        $background_image = $upload_dir . $file_name;
+
+        // Save background image path to a file or database for persistence
+        file_put_contents("background_image.txt", $background_image);
+    }
+
+    // Handle background color change
+    if (isset($_POST["color"])) {
+        $background_color = $_POST["color"];
+
+        // Save background color to a file or database for persistence
+        file_put_contents("background_color.txt", $background_color);
+    }
+
+    // Redirect back to admin.html after background change
+    header("Location: admin.html");
+    exit;
+}
+?>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="admin-panel">
+        <h2>Admin Panel - Change Background</h2>
+        <form action="change_background.php" method="POST" enctype="multipart/form-data">
+            <label for="background">Upload Background Image:</label><br>
+            <input type="file" id="background" name="background" accept="image/*"><br><br>
+
+            <label for="color">Or Choose Color (Hex):</label><br>
+            <input type="color" id="color" name="color" value="#ffffff"><br><br>
+
+            <input type="submit" value="Change Background">
+        </form>
+    </section>
+</body>
+</html>
